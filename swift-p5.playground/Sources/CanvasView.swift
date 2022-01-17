@@ -1,14 +1,11 @@
 import Cocoa
 import Foundation
 
-protocol CanvasViewDelegate: AnyObject {
-    func canvasJustDraw(_ dirtyRect: NSRect)
-}
-
 class CanvasView: NSView {
-    weak var delegate: CanvasViewDelegate?
+    let onDraw: () -> Void
     
-    override init(frame frameRect: NSRect) {
+    init(frame frameRect: NSRect, onDraw: @escaping () -> Void) {
+        self.onDraw = onDraw
         super.init(frame: frameRect)
     }
     
@@ -23,6 +20,6 @@ class CanvasView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         
-        delegate?.canvasJustDraw(dirtyRect)
+        onDraw()
     }
 }
