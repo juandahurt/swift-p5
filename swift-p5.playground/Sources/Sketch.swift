@@ -29,12 +29,12 @@ public func rect(_ x: Double, _ y: Double, _ w: Double, _ h: Double) {
     ctx.fill(rect)
 }
 
-public func fill(_ gray: Double = 0) {
-    ctx.setFillColor(gray: gray, alpha: 1)
+public func fill(_ gray: Double = 0, alpha: Double = 1) {
+    ctx.setFillColor(gray: gray, alpha: alpha)
 }
 
 public func point(_ x: Double, _ y: Double) {
-    let rect = CGRect(x: x, y: y, width: 5, height: 5)
+    let rect = CGRect(x: x, y: y, width: 4, height: 4)
     ctx.fillEllipse(in: rect)
 }
 
